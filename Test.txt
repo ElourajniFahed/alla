@@ -1,0 +1,26 @@
+/* lcode hedha yit7at fi Class Afficher fil methode  onItemClic */
+
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        indice=position;
+        Toast.makeText(this, ""+id,Toast.LENGTH_LONG).show();
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Editing");
+        LayoutInflater inf = LayoutInflater.from(this);//layout inflater allow you to communicate with the xml file in order to use it
+        LinearLayout l = (LinearLayout) inf.inflate(R.layout.activity_ajout,null); // determiner le layout que vas utiliser
+        EditText nom_txt= (EditText) l.findViewById(R.id.nom_txt);
+        EditText prenom_txt= (EditText) l.findViewById(R.id.prenom_txt);
+        EditText telephone_txt = (EditText) l.findViewById(R.id.phone_txt);
+        //nom_txt.setText("fff");
+        nom_txt.setText(Acceuill.data.get(position).getNom().toString());
+        prenom_txt.setText(Acceuill.data.get(position).getPrenom().toString());
+        telephone_txt.setText(Acceuill.data.get(position).getNum_tel().toString());
+        alert.setView(l);
+       // alert.setMessage("Voulez vous supprimer cet element ");
+        alert.setPositiveButton("Confirmer",this);
+        alert.setNegativeButton("Annuler",this);
+        alert.setNeutralButton("Modifier",this);
+        alert.show();
+
+
+    }
